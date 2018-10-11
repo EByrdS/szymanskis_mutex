@@ -1,4 +1,12 @@
-#
+# Szymański's Mutual Exclusion Algorithm
+This algorithm is modeled on a waiting room with an entry and exit doorway.
+Initially the entry door is open and the exit door is closed.
+All processes which request entry into the critical section at the same time
+enter the waiting room; the last of them closes the entry door and opens
+the exit door. The processes then enter the critical section one by one.
+The last process to leave the critical section closes the exit door and
+reopens the entry door so he next batch of processes may enter.
+
 ## Getting Started
 Install the gem or add it to the Gemfile.
 ```
