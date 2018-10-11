@@ -52,3 +52,4 @@ receive the critical section code of both and handle it in the same function.
 
 ## Contribution
 Pull Requests will be reviewed before merging. Issues are being addressed.
+All Pull Requests must contain specs for the changes.
