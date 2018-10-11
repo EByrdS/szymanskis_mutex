@@ -1,6 +1,7 @@
-[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex)
+[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex) ![](https://ruby-gem-downloads-badge.herokuapp.com/szymanskis_mutex?extension=png) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT) [![Gem](https://img.shields.io/gem/v/szymanskis_mutex.svg?style=flat)](http://rubygems.org/gems/szymanskis_mutex "View this project in Rubygems")
 
 # Szymański's Mutual Exclusion Algorithm
+
 This algorithm is modeled on a waiting room with an entry and exit doorway.
 Initially the entry door is open and the exit door is closed.
 All processes which request entry into the critical section at the same time
