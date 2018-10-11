@@ -24,25 +24,25 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 # Based on the Szymanski's Mutual Exclusion Algorithm
-module SzymanskisMutex
+class SzymanskisMutex
   # Larger seconds mean less cycles/second but may result in lower completion
   SZYMANSKIS_SLEEP = 0.05
 
   @@flags = {}
   @@counter = {}
 
-  def mutual_exclusion(concern)
+  def self.mutual_exclusion(concern)
     @@counter[concern] ||= 0
     @@flags[concern] ||= {}
 
     # Suppose @@counter += 1 is an atomic function
     my_id = @@counter[concern] += 1
 
-    entry_protocol(concern, my_id)
+    self.entry_protocol(concern, my_id)
     begin
       yield
     ensure
-      exit_protocol(concern, my_id)
+      self.exit_protocol(concern, my_id)
     end
   end
 
@@ -50,7 +50,7 @@ module SzymanskisMutex
   # 2: Waiting for other processes to enter
   # 3: Standing in doorway
   # 4: Closed entrance door
-  def entry_protocol(concern, id)
+  def self.entry_protocol(concern, id)
     # Standing outside waiting room
     @@flags[concern][id] = 1
 
@@ -79,7 +79,7 @@ module SzymanskisMutex
     end
   end
 
-  def exit_protocol(concern, id)
+  def self.exit_protocol(concern, id)
     # Ensure everyone in the waiting room has realized that the door
     # is supposed to be closed
     while @@flags[concern].select { |i| i > id }.any? { |f| [2, 3].include?(f) }
@@ -95,6 +95,4 @@ module SzymanskisMutex
     @@counter.delete concern
     @@flags.delete concern
   end
-
-  protected :entry_protocol, :exit_protocol
 end
