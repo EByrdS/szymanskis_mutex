@@ -1,4 +1,6 @@
-# Szymański's Mutual Exclusion Algorithm[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex)
+[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex)
+
+# Szymański's Mutual Exclusion Algorithm
 This algorithm is modeled on a waiting room with an entry and exit doorway.
 Initially the entry door is open and the exit door is closed.
 All processes which request entry into the critical section at the same time
