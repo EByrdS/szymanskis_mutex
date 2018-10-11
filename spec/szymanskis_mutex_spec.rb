@@ -1,18 +1,13 @@
 require 'spec_helper'
 
-RSpec.describe 'Szymanskis Mutual Exclusion Algorithm' do
+RSpec.describe SzymanskisMutex do
   let(:test_class) do
     class RaceConditionReproducer
-      include SzymanskisMutex
 
       @@value = 0
 
       def value
         @@value
-      end
-
-      def mutex_add(concern)
-        mutual_exclusion(concern) { unsafe_add }
       end
 
       def unsafe_add
@@ -50,7 +45,7 @@ RSpec.describe 'Szymanskis Mutual Exclusion Algorithm' do
   it 'completes code for single instance' do
     test_instance = test_class.new
     expect(test_instance.value).to eq 0
-    test_instance.mutex_add(:my_test)
+    described_class.mutual_exclusion(:my_test) { test_instance.unsafe_add }
     expect(test_instance.value).to eq 1
   end
 
@@ -60,7 +55,7 @@ RSpec.describe 'Szymanskis Mutual Exclusion Algorithm' do
     5.times do
       threads << Thread.new do
         instance = test_class.new
-        instance.mutex_add(:my_test)
+        described_class.mutual_exclusion(:my_test) { instance.unsafe_add }
       end
     end
     threads.each(&:join)
