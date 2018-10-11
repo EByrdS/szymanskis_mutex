@@ -2,6 +2,7 @@
 ![](https://ruby-gem-downloads-badge.herokuapp.com/szymanskis_mutex?extension=png)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Gem](https://img.shields.io/gem/v/szymanskis_mutex.svg?style=flat)](http://rubygems.org/gems/szymanskis_mutex "View this project in Rubygems")
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 # Szymański's Mutual Exclusion Algorithm
 
