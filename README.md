@@ -6,7 +6,7 @@ enter the waiting room; the last of them closes the entry door and opens
 the exit door. The processes then enter the critical section one by one.
 The last process to leave the critical section closes the exit door and
 reopens the entry door so he next batch of processes may enter.
-
+[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex)
 ## Getting Started
 Install the gem or add it to the Gemfile.
 ```
