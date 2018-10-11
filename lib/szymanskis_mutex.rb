@@ -37,6 +37,7 @@ class SzymanskisMutex
     # Provide a MutEx lock
     # Provide the critical section as a block to this method
     # Different concerns will prevent unrelated code to wait on each other
+    # Returns the result of the critical code or nil if something fails
     def mutual_exclusion(concern)
       @@counter[concern] ||= 0
       @@flags[concern] ||= {}
@@ -46,10 +47,11 @@ class SzymanskisMutex
 
       entry_protocol(concern, my_id)
       begin
-        yield
+        result = yield
       ensure
         # If something fails in the critical section release the resource
         exit_protocol(concern, my_id)
+        result
       end
     end
 
@@ -59,6 +61,7 @@ class SzymanskisMutex
     # 2: Waiting for other processes to enter
     # 3: Standing in doorway
     # 4: Closed entrance door
+    # id is the number of the process entering this section relative to concern
     def entry_protocol(concern, id)
       # Standing outside waiting room
       @@flags[concern][id] = 1
@@ -90,6 +93,7 @@ class SzymanskisMutex
 
     # Exit the process and if it is the last one in that batch then
     # reopens the door for the next batch
+    # id is the number of the process exiting this section relative to concern
     def exit_protocol(concern, id)
       # Ensure everyone in the waiting room has realized that the door
       # is supposed to be closed

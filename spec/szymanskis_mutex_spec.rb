@@ -3,7 +3,6 @@ require 'spec_helper'
 RSpec.describe SzymanskisMutex do
   let(:test_class) do
     class RaceConditionReproducer
-
       @@value = 0
 
       def value
@@ -11,13 +10,13 @@ RSpec.describe SzymanskisMutex do
       end
 
       def unsafe_add
-        sleep 2
+        sleep 0.2
         temp = @@value
 
-        sleep 2
+        sleep 0.2
         temp += 1
 
-        sleep 2
+        sleep 0.2
         @@value = temp
       end
 
@@ -60,5 +59,15 @@ RSpec.describe SzymanskisMutex do
     end
     threads.each(&:join)
     expect(test_instance.value).to eq 5
+  end
+
+  it 'returns the result of critical section' do
+    test_instance = test_class.new
+    starting_val = test_instance.value
+    expect(
+      described_class.mutual_exclusion(:return) do
+        test_instance.unsafe_add
+      end
+    ).to eq(starting_val + 1)
   end
 end
