@@ -1,4 +1,4 @@
-[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex) ![](https://ruby-gem-downloads-badge.herokuapp.com/szymanskis_mutex?extension=png)
+[![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex) ![](https://ruby-gem-downloads-badge.herokuapp.com/szymanskis_mutex?extension=png)[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # Szymański's Mutual Exclusion Algorithm
 
