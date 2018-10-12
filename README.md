@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/EByrdS/szymanskis_mutex.png?branch=master)](https://travis-ci.org/EByrdS/szymanskis_mutex)
 [![Inline docs](http://inch-ci.org/github/EByrdS/szymanskis_mutex.svg?branch=master)](http://inch-ci.org/github/EByrdS/szymanskis_mutex)
 ![](https://ruby-gem-downloads-badge.herokuapp.com/szymanskis_mutex?extension=png)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
