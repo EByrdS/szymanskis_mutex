@@ -70,4 +70,32 @@ RSpec.describe SzymanskisMutex do
       end
     ).to eq(starting_val + 1)
   end
+
+  it 'raises same exception' do
+    expect {
+      described_class.mutual_exclusion(:exception) do
+        raise 'custom exception'
+      end
+    }.to raise_error('custom exception')
+  end
+
+  it 'releases resources after exception' do
+    threads = []
+    turns = (0..5).to_a
+    random_fail = turns.sample
+    turns.each_with_index do |val, i|
+      threads << Thread.new do
+        begin
+          described_class.mutual_exclusion(:release) do
+            sleep 0.1
+            raise 'custom fail' if random_fail == i
+          end
+        rescue
+        end
+      end
+    end
+    threads.each(&:join)
+    expect(described_class.class_variable_get(:@@counter))
+      .to eq({})
+  end
 end
